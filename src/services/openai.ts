@@ -16,12 +16,13 @@ export const loadOpenAI = async function () {
   }
 };
 
+// temperature not supported in modern models, so we always set to 1 now
 export const getCompletion = async(system: string, prompt: string, temperature: number, model: string): Promise<string | null> => {
   try {
     const chat_completion = await openai.chat.completions.create({
       model: model,
       messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-      temperature: temperature,
+      temperature: 1, // temperature not supported in modern models, so we always set to 1 now
     });
 
     if (process.env.DEBUG) {

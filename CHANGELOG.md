@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.8.1 - Bug fix
+
+- Fixed an error when using the name preview endpoint with gpt-5-mini.
+
 ## v1.8 - Support for custom fields
 
 - Added support for the custom field and prompt capability of v1.8 of the front end.
