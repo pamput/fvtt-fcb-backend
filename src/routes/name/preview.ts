@@ -32,7 +32,7 @@ async function routes (fastify: FastifyInstance): Promise<void> {
 
 
     try {
-      const result = await getPreviewCompletion(nameStyles, prompt, 0.9);
+      const result = await getPreviewCompletion(nameStyles, prompt, 1);
       
       if (result.length!==nameStyles.length) {
         return reply.status(500).send({ error: 'Failed to generate name previews due to an invalid response from the provider.' });

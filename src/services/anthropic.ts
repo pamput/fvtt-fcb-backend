@@ -16,6 +16,7 @@ export const loadAnthropic = async function(): Promise<void> {
   }
 };
 
+// temperature not supported in modern models, so we always set to 1 now
 export const getCompletion = async(system: string, prompt: string, temperature: number, model: string): Promise<string | null> => {
   try {
     const response = await anthropic.messages.create({
@@ -23,7 +24,7 @@ export const getCompletion = async(system: string, prompt: string, temperature: 
       system: system,
       max_tokens: 4096,
       messages: [{ role: 'user', content: prompt }],
-      temperature: temperature,
+      temperature: 1, // temperature not supported in modern models, so we always set to 1 now
     });
 
     const resultText = response.content[0].type === 'text' ? response.content[0].text.trim() : null;
