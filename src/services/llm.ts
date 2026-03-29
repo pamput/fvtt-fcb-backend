@@ -5,12 +5,24 @@ import { textModels, ModelProvider, DEFAULT_TEXT_MODEL_ID, TextModels } from './
 
 
 const tryParseJson = (str: string): unknown => {
+  // Strip markdown code fences if present
+  let cleaned = str.trim();
+  if (cleaned.startsWith('```json')) {
+    cleaned = cleaned.slice(7);
+  } else if (cleaned.startsWith('```')) {
+    cleaned = cleaned.slice(3);
+  }
+  if (cleaned.endsWith('```')) {
+    cleaned = cleaned.slice(0, -3);
+  }
+  cleaned = cleaned.trim();
+
   try {
-    return JSON.parse(str);
+    return JSON.parse(cleaned);
   } catch (_e) {
     try {
       // Occasionally it's returned as a double-encoded string
-      const reparsed = JSON.parse(JSON.parse(str));
+      const reparsed = JSON.parse(JSON.parse(cleaned));
       return reparsed;
     } catch (_e2) {
       if (process.env.DEBUG) {
