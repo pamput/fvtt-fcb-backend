@@ -35,9 +35,9 @@ export const textModels = {
     description: 'From OpenAI. High-quality, $0.25/million tokens, but subject to $5/year minimum. Best if you are using your OpenAI token for other things so the minimum doesn\'t matter',
   },
   [TextModels.Claude_3_haiku]: {
-    name: 'Claude 3 Haiku',
+    name: 'Claude 4.5 Haiku',
     provider: ModelProvider.Anthropic,
-    modelId: 'claude-3-haiku-20240307',
+    modelId: 'claude-haiku-4-5-20251001',
     description: 'From Anthropic. High-quality, $0.25/million tokens, but subject to $5/year minimum. Best if you are using your Anthropic token for other things so the minimum doesn\'t matter',
   },
 };
